@@ -15,6 +15,7 @@ class LoadSamples:
             dico = pickle.load(file)
         return dico
 
+
 class LinearARModel(nn.Module):
     def __init__(self, lag):
         """
