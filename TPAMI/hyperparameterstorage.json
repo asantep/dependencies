@@ -1,0 +1,80 @@
+{
+    "traditional_classification_parameters":{
+
+    },
+    "traditional_regression_parameters": {
+	    "linear_hyperparameters": {
+	        "fit_intercept": true,
+	        "n_jobs": null,
+	        "positive": false
+   		},
+    	"svr_poly_hyperparameters": {
+	        "nu": 0.2,
+	        "C": 1.0,
+	        "kernel": "rbf",
+	        "degree": 2,
+	        "gamma": "scale",
+	        "coef0": 0.0,
+	        "shrinking": true,
+	        "tol": 0.001,
+	        "cache_size": 200,
+	        "verbose": false,
+	        "max_iter": -1
+    	},
+    	"mlp_hyperparameters": {
+	        "hidden_layer_sizes": [
+	            50,
+	            30
+	        ],
+	        "activation": "relu",
+	        "solver": "adam",
+	        "alpha": 0.0001,
+	        "batch_size": "auto",
+	        "learning_rate": "constant",
+	        "learning_rate_init": 0.001,
+	        "power_t": 0.5,
+	        "max_iter": 200,
+	        "shuffle": true,
+	        "random_state": 1024,
+	        "tol": 0.0001,
+	        "verbose": false,
+	        "warm_start": false,
+	        "momentum": 0.9,
+	        "nesterovs_momentum": true,
+	        "early_stopping": true,
+	        "validation_fraction": 0.1,
+	        "beta_1": 0.9,
+	        "beta_2": 0.999,
+	        "epsilon": 1e-08,
+	        "n_iter_no_change": 10,
+	        "max_fun": 15000
+    	}
+    },
+    "deep_learning_regression_parameters":{
+    	"lstm_hyperparameters":{
+
+    	},
+    	"gru_hyperparameters":{
+
+    	}
+    },
+    "graph_based_regression_parameters":{
+
+    },
+    "transformer_regression_parameters":{
+    	"ptst_hyperparameters": {
+	        "num_input_channels": 1,
+	        "context_length": 32,
+	        "loss": "mae",
+	        "activation_function": "relu",
+	        "prediction_length": 15
+    	},
+    	"informer_hyperparameters": {
+
+   		},
+    	"autoformer_hyperparameters": {
+
+    	}
+    },
+    "steps_ahead": []
+}
