@@ -3,6 +3,8 @@ from numpy.lib.stride_tricks import sliding_window_view
 from sklearn import linear_model
 from sklearn.svm import NuSVR
 from sklearn.neural_network import MLPRegressor
+
+from comparison.synthetic import lorenz
 from finch import FINCH
 import numpy as np
 from tslearn.metrics import dtw
@@ -535,12 +537,22 @@ path_to_data = dict(
     ETTh2 = '/home/local/USHERBROOKE/owup2301/Téléchargements/all_six_datasets/all_six_datasets/ETT-small/ETTh2.csv',
     ETTm1 = '/home/local/USHERBROOKE/owup2301/Téléchargements/all_six_datasets/all_six_datasets/ETT-small/ETTm1.csv',
     ETTm2 = '/home/local/USHERBROOKE/owup2301/Téléchargements/all_six_datasets/all_six_datasets/ETT-small/ETTm2.csv',
+
+    ##############################################################################################
+    lorenz250 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/lorenx250.csv',
+    lorenz500 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/lorenx500.csv',
+    lorenz1000 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/lorenx1000.csv',
+    var250 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/var250.csv',
+    var500 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/var500.csv',
+    var1000 = '/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/comparison/var1000.csv',
 )
 
-size = 200
+size = 500
 moving_step = 50
 lag = 3
 model_name = 'linear' # svr and mlp
+data_name = 'lorenz1000'
+
 linear_hyperparameters={
     'fit_intercept':True,
     'n_jobs':None,
@@ -586,8 +598,6 @@ linear_hyperparameters={
 view_pattern_lifespan = True
 view_causal_graph = True
 
-data_name = 'weather'
-
 if __name__ == '__main__':
     patterns, evolving_graphs, nbre_steps, data = main(
         path_to_data=path_to_data[data_name],
@@ -607,9 +617,11 @@ if __name__ == '__main__':
         'patterns': patterns
     }
 
-    name = path_to_data.split('/')[-1].split('.')[0]
+    name = path_to_data[data_name].split('/')[-1].split('.')[0]
 
-    f = open("/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/TPAMI/storage/"+name+".pkl", "wb")
+    f = open(
+        f"/home/local/USHERBROOKE/owup2301/PycharmProjects/dependence/TPAMI/storage/{name}_{model_name}_{size}.pkl",
+        "wb")
 
     pickle.dump(dico, f)
     # close file
